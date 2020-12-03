@@ -19,7 +19,7 @@ module.exports = class Pexels {
         "password": this.password
       },
       headers: {
-        "secret-key": this.skey;
+        "secret-key": this.skey
       }
     });
     this.token = token.data.token;
@@ -38,21 +38,27 @@ module.exports = class Pexels {
       data: {"context":"android","file_types":["jpeg"]},
       headers: {
         "secret-key": this.skey,
-	"authorization": "Bearer " + this.token
+	"authorization": "Bearer " + this.token,
+	"content-length": 43
       }
     });
     var up_url = udata.data[0]["upload_url"];
     var data = new fd();
     var fields = udata.data[0].fields;
-    for (key in fields) {
+    for (var key in fields) {
       data.append(key,fields[key]);
     }
     data.append("file", fs.createReadStream(path));
-    await axios({
-      url: up_url,
-      method: 'POST',
-      data: data,
-      headers: data.getHeaders()
+    data.getLength(async function(err,len) {
+      await axios({
+        url: up_url,
+        method: 'POST',
+        data: data,
+        headers: {
+	  'content-length': len,
+	  ...data.getHeaders()
+	}
+      });
     });
   }
 }
