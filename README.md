@@ -4,6 +4,23 @@
 
 >**Unofficial Pexels API**
 
+## Example
+
+The Following Code snipet will help you understand how to use this.
+
+```js
+var Pexels = require("pexels-api");
+var pex = new Pexels();
+
+(async function() {
+  await pex.login(email, password);
+  // or
+  await pex.addToken(token);
+  // upload image
+  await pex.upload(image_path);
+})();
+```
+
 ## Contributing
 
 Thank you for your interest in contributing, If you feel like there's something missing or any new feature can be added, just create a PR and I will see the rest.
