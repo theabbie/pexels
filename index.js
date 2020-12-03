@@ -52,6 +52,7 @@ module.exports = class Pexels {
     data.append("file", fs.createReadStream(path));
     var token = this.token;
     var skey = this.skey;
+    var root = this.root;
     data.getLength(async function(err,len) {
       await axios({
         url: up_url,
