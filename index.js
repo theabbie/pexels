@@ -43,6 +43,7 @@ module.exports = class Pexels {
       }
     });
     var up_url = udata.data[0]["upload_url"];
+    var id = udata.data[0]["medium_id"];
     var data = new fd();
     var fields = udata.data[0].fields;
     for (var key in fields) {
@@ -58,6 +59,15 @@ module.exports = class Pexels {
 	  'content-length': len,
 	  ...data.getHeaders()
 	}
+      });
+      await axios({
+        url: 'https://www.pexels.com/api/v2/uploads/success',
+        method: 'POST',
+        data: {"media":[{"id":id}]},
+        headers: {
+          'authorization': 'Bearer ' + this.token,
+          'secret-key': this.skey
+        }
       });
     });
   }
