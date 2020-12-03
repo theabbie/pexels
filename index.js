@@ -64,7 +64,7 @@ module.exports = class Pexels {
 	}
       });
       await axios({
-        url: this.root + '/uploads/success',
+        url: root + '/uploads/success',
         method: 'POST',
         data: {"media":[{"id":id.toString()}]},
         headers: {
