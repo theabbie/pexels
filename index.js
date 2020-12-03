@@ -50,6 +50,8 @@ module.exports = class Pexels {
       data.append(key,fields[key]);
     }
     data.append("file", fs.createReadStream(path));
+    var token = this.token;
+    var skey = this.skey;
     data.getLength(async function(err,len) {
       await axios({
         url: up_url,
@@ -61,12 +63,12 @@ module.exports = class Pexels {
 	}
       });
       await axios({
-        url: 'https://www.pexels.com/api/v2/uploads/success',
+        url: this.root + '/uploads/success',
         method: 'POST',
-        data: {"media":[{"id":id}]},
+        data: {"media":[{"id":id.toString()}]},
         headers: {
-          'authorization': 'Bearer ' + this.token,
-          'secret-key': this.skey
+          'authorization': 'Bearer ' + token,
+          'secret-key': skey
         }
       });
     });
