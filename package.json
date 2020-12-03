@@ -1,0 +1,29 @@
+{
+  "name": "pexels-api",
+  "version": "1.0.0",
+  "description": "Unofficial Pexels API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'working'"
+  },
+  "funding": "https://theabbie.github.io",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theabbie/pexels.git"
+  },
+  "keywords": [
+    "pexels",
+    "pexels-api",
+    "theabbie"
+  ],
+  "author": "theabbie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theabbie/pexels/issues"
+  },
+  "homepage": "https://github.com/theabbie/pexels#readme",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "form-data": "^3.0.0"
+  }
+}
